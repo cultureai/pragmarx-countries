@@ -79,7 +79,7 @@ class Repository
     /**
      * Call magic method.
      *
-     * @param $name
+     * @param  $name
      * @param  array  $arguments
      * @return mixed
      */
@@ -91,8 +91,8 @@ class Repository
     /**
      * Call a method currencies collection.
      *
-     * @param $name
-     * @param $arguments
+     * @param  $name
+     * @param  $arguments
      * @return bool|mixed
      */
     public function call($name, $arguments)
@@ -107,7 +107,9 @@ class Repository
             $result = $this->hydrator->hydrate($result);
         }
 
-        return $this->cache->set($cacheKey, $result, $this->config->get('cache.duration'));
+        $this->cache->set($cacheKey, $result, $this->config->get('cache.duration'));
+
+        return $result;
     }
 
     /**
@@ -181,7 +183,7 @@ class Repository
     /**
      * Load currency json file.
      *
-     * @param $code
+     * @param  $code
      * @return string
      */
     public function loadCurrenciesForCountry($code)
@@ -224,7 +226,7 @@ class Repository
     /**
      * Make flags array for a coutry.
      *
-     * @param $country
+     * @param  $country
      * @return array
      */
     public function makeAllFlags($country)
@@ -251,7 +253,7 @@ class Repository
     /**
      * Read the flag SVG file.
      *
-     * @param $country
+     * @param  $country
      * @return string
      */
     public function getFlagSvg($country)
@@ -264,7 +266,7 @@ class Repository
     /**
      * Get the SVG file path.
      *
-     * @param $country
+     * @param  $country
      * @return string
      */
     public function getFlagSvgPath($country)
@@ -275,7 +277,7 @@ class Repository
     /**
      * Get country geometry.
      *
-     * @param $country
+     * @param  $country
      * @return string
      */
     public function getGeometry($country)
@@ -288,7 +290,7 @@ class Repository
     /**
      * Get country topology.
      *
-     * @param $country
+     * @param  $country
      * @return string
      */
     public function getTopology($country)
@@ -301,7 +303,7 @@ class Repository
     /**
      * Hydrate a country element.
      *
-     * @param $collection
+     * @param  $collection
      * @param  null  $elements
      * @return \PragmaRX\Coollection\Package\Coollection
      */
@@ -313,7 +315,7 @@ class Repository
     /**
      * Find a country timezone.
      *
-     * @param $countryCode
+     * @param  $countryCode
      * @return null
      */
     public function findTimezones($countryCode)
@@ -326,7 +328,7 @@ class Repository
     /**
      * Find a country timezone.
      *
-     * @param $zoneId
+     * @param  $zoneId
      * @return \PragmaRX\Coollection\Package\Coollection
      */
     public function findTimezoneTime($zoneId)
